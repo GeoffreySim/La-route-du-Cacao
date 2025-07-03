@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Route du Cacao - Une expédition pour rêver, apprendre et agir</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="header-left" style="display:flex;align-items:center;">
+                <img src="images/partenaire3.png" alt="Partenaire" style="height:38px;width:auto;margin-right:1rem;vertical-align:middle;">
+                <a href="index.html" class="nav-logo">
+                    <i class="fas fa-ship"></i>
+                    <span>La Route du Cacao</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Présentation
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="qui-sommes-nous.html">Qui Sommes Nous</a></li>
+                        <li><a href="notre-equipe.html">Notre Équipe</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Projet
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#mission">Notre Mission</a></li>
+                        <li><a href="#expedition">Nos Expéditions</a></li>
+                        <li><a href="#equipage">L'Équipage</a></li>
+                        <li><a href="rse.html">RSE</a></li>
+                        <li><a href="odd.html">ODD</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Réseau
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#partenaires">Partenaires</a></li>
+                        <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        <li><a href="presse.html">Presse</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="jeux-concours.html">Jeux & Concours</a>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#contact" class="dropdown-toggle">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+            <div id="lang-switcher" style="position:relative;display:flex;align-items:center;margin-left:1.2rem;margin-right:1.2rem;">
+                <button id="langActiveBtn" style="background:none;border:none;cursor:pointer;padding:0;"><img id="langActiveFlag" src="https://flagcdn.com/fr.svg" alt="Langue" style="width:26px;height:18px;vertical-align:middle;"></button>
+                <div id="langDropdown" style="display:none;position:absolute;top:120%;left:0;background:#fff;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,0.13);padding:0.3rem 0;z-index:999;min-width:40px;">
+                    <button class="langDropBtn" data-lang="en" style="background:none;border:none;cursor:pointer;padding:0.2rem 0.7rem;width:100%;display:block;"><img src="https://flagcdn.com/gb.svg" alt="EN" style="width:26px;height:18px;vertical-align:middle;"></button>
+                    <button class="langDropBtn" data-lang="es" style="background:none;border:none;cursor:pointer;padding:0.2rem 0.7rem;width:100%;display:block;"><img src="https://flagcdn.com/es.svg" alt="ES" style="width:26px;height:18px;vertical-align:middle;"></button>
+                    <button class="langDropBtn" data-lang="fr" style="background:none;border:none;cursor:pointer;padding:0.2rem 0.7rem;width:100%;display:block;"><img src="https://flagcdn.com/fr.svg" alt="FR" style="width:26px;height:18px;vertical-align:middle;"></button>
+                </div>
+            </div>
+            <div class="header-right" style="display:flex;align-items:center;gap:1.2rem;margin-left:auto;">
+                <a href="videos.html" class="btn btn-primary nav-video-btn">
+                    <i class="fas fa-play"></i>
+                    Vidéo
+                </a>
+                <button id="helpBtn" class="btn btn-help">HELP</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Popup HELP -->
+    <div id="helpPopup" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.45);align-items:center;justify-content:center;">
+        <div style="background:#fff;padding:2.5rem 2rem;border-radius:18px;max-width:95vw;width:400px;box-shadow:0 8px 40px rgba(0,0,0,0.18);text-align:center;position:relative;">
+            <button id="closeHelpPopup" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;">&times;</button>
+            <h2 style="margin-bottom:1.2rem;">Aidez-nous&nbsp;!</h2>
+            <div id="helpPopupContent" style="margin-bottom:1.5rem;color:#333;"></div>
+            <button id="helpActionBtn" class="btn btn-primary" style="width:100%;">Donner un coup de main</button>
+        </div>
+    </div>
+
+    <!-- Section Hero -->
+    <section id="accueil" class="hero">
+        <div class="hero-background">
+            <img src="images/banniere.jpg" alt="La Route du Cacao - Bannière" loading="lazy">
+        </div>
+    </section>
+
+    <!-- Section Mission -->
+    <section id="mission" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Notre Mission</h2>
+                <p>Mettre la lumière sur l'écologie positive et active</p>
+            </div>
+            <div class="mission-content">
+                <div class="mission-text">
+                    <h3>Une Renaissance Bleue pour une Cause Verte</h3>
+                    <p>À Brest, deux IMOCA mythiques reprennent la mer, restaurés, transformés, ils voguent vers un nouveau récit : celui d'un monde en transition.</p>
+                    <p>À leur bord, une équipe d'étudiants engagés en énergie, écologie, architecture et audiovisuel, sélectionnés pour la pertinence de leur projet et passionnés par la rencontre et la transmission.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">Bateaux IMOCA</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Pays traversés</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Mois d'expédition</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mission-image">
+                    <img src="images/cacao.jpg" alt="Cacao" class="mission-boat-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Expédition -->
+    <section id="expedition" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos Expéditions</h2>
+            </div>
+            <div class="timeline-birds">
+                <svg width="100%" height="60" viewBox="0 0 400 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+                    <g class="bird-group">
+                        <path class="bird" d="M10 40 Q 20 20 30 40" stroke="#8B4513" stroke-width="2" fill="none"/>
+                        <path class="bird" d="M30 40 Q 40 20 50 40" stroke="#8B4513" stroke-width="2" fill="none"/>
+                    </g>
+                    <g class="bird-group" style="animation-delay: 1.5s;">
+                        <path class="bird" d="M120 30 Q 130 10 140 30" stroke="#FFD700" stroke-width="2" fill="none"/>
+                        <path class="bird" d="M140 30 Q 150 10 160 30" stroke="#FFD700" stroke-width="2" fill="none"/>
+                    </g>
+                    <g class="bird-group" style="animation-delay: 2.5s;">
+                        <path class="bird" d="M250 50 Q 260 30 270 50" stroke="#8B4513" stroke-width="2" fill="none"/>
+                        <path class="bird" d="M270 50 Q 280 30 290 50" stroke="#8B4513" stroke-width="2" fill="none"/>
+                    </g>
+                </svg>
+            </div>
+            <div class="timeline">
+                <div class="timeline-event">
+                    <div class="timeline-icon"><i class="fas fa-compass"></i></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Juil. 2025 - Mars 2026</span>
+                        <h3>Chantier Naval</h3>
+                        <p>Restauration de nos 2 IMOCA mythiques transformés en laboratoires flottants pour l'économie bleue.</p>
+                    </div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Sept. 2025 - Mai 2026</span>
+                        <h3>Appel à Projets</h3>
+                        <p>Sélection de 12 étudiants ambassadeurs pour documenter les solutions durables locales.</p>
+                    </div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-icon"><i class="fas fa-water"></i></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Mars 2026 - Août 2026</span>
+                        <h3>Tours d'Europe</h3>
+                        <p>33 escales en Europe pour partager le rêve, rencontrer, inspirer et rassembler.</p>
+                    </div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-icon"><i class="fas fa-dove"></i></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Oct. 2026 - Avril 2027</span>
+                        <h3>Expédition Transatlantique</h3>
+                        <p>Odyssée humaine et écologique à travers 12 pays d'Amérique latine.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Équipage -->
+    <section id="equipage" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>L'Équipage</h2>
+                <p>Une équipe d'étudiants engagés pour la transition écologique</p>
+            </div>
+            <div class="equipage-content">
+                <div class="equipage-item">
+                    <div class="equipage-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>8 Lauréats par Bateau</h3>
+                    <p>Étudiants sélectionnés en énergie, écologie, architecture et audiovisuel pour documenter les solutions durables.</p>
+                </div>
+                <div class="equipage-item">
+                    <div class="equipage-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Recherche Scientifique</h3>
+                    <p>Partenariat avec l'IFREMER pour des relevés environnementaux : température, biodiversité marine, pollution plastique.</p>
+                </div>
+                <div class="equipage-item">
+                    <div class="equipage-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Documentaire Immersif</h3>
+                    <p>Mini-séries, carnets de bord, capsules vidéo pour partager l'aventure et inspirer l'action.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Partenaires -->
+    <section id="partenaires" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Partenaires RSE & Collaborations</h2>
+                <p>Un écosystème d'acteurs engagés pour la transition écologique</p>
+            </div>
+            <div class="partenaires-banner">
+                <div class="partenaires-scroll">
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire1.png" alt="Partenaire 1">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire2.png" alt="Partenaire 2">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire3.png" alt="Partenaire 3">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire4.png" alt="Partenaire 4">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire5.png" alt="Partenaire 5">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire6.png" alt="Partenaire 6">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire7.png" alt="Partenaire 7">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire8.png" alt="Partenaire 8">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire9.png" alt="Partenaire 9">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire10.png" alt="Partenaire 10">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire11.png" alt="Partenaire 11">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire12.png" alt="Partenaire 12">
+                    </div>
+                    <!-- Duplication pour un défilement continu -->
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire1.png" alt="Partenaire 1">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire2.png" alt="Partenaire 2">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire3.png" alt="Partenaire 3">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire4.png" alt="Partenaire 4">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire5.png" alt="Partenaire 5">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire6.png" alt="Partenaire 6">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire7.png" alt="Partenaire 7">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire8.png" alt="Partenaire 8">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire9.png" alt="Partenaire 9">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire10.png" alt="Partenaire 10">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire11.png" alt="Partenaire 11">
+                    </div>
+                    <div class="partenaire-logo">
+                        <img src="images/partenaire12.png" alt="Partenaire 12">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="partenaires-cta">
+                <a href="devenir-partenaire.html" class="btn btn-primary btn-partner">
+                    <i class="fas fa-handshake"></i>
+                    Devenir Partenaire
+                </a>
+                <p>Rejoignez notre écosystème d'acteurs engagés pour la transition écologique</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>La Route du Cacao</h3>
+                    <p>Une expédition pour rêver, apprendre et agir</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/imoca_la_route_du_cacao/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#mission">Notre Mission</a></li>
+                        <li><a href="#expedition">Nos Expéditions</a></li>
+                        <li><a href="#equipage">L'Équipage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Informations</h4>
+                    <ul>
+                        <li><a href="mailto:contact@larouteducacao.org">contact@larouteducacao.org</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Votre message" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 La Route du Cacao. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // HELP button blink logic
+        const helpBtn = document.getElementById('helpBtn');
+        function updateHelpBlink() {
+            if (!helpBtn) return;
+            const blink = localStorage.getItem('helpBlink') === 'on';
+            if (blink) {
+                helpBtn.classList.add('help-blink');
+            } else {
+                helpBtn.classList.remove('help-blink');
+            }
+        }
+        updateHelpBlink();
+        window.addEventListener('storage', updateHelpBlink);
+    });
+    </script>
+</body>
+</html> 

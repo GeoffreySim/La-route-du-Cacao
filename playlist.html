@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist - La Route du Cacao</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-ship"></i>
+                <span>La Route du Cacao</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html#mission">Notre Mission</a></li>
+                <li><a href="index.html#expedition">Nos Expéditions</a></li>
+                <li><a href="index.html#equipage">L'Équipage</a></li>
+                <li><a href="index.html#partenaires">Partenaires</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <a href="videos.html" class="btn btn-primary nav-video-btn">
+                <i class="fas fa-play"></i>
+                Vidéo
+            </a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content page-centered">
+                <h1 id="playlistTitle">Playlist</h1>
+                <p id="playlistDescription">Découvrez les vidéos de cette playlist</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Vidéos de la Playlist -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="sectionTitle">Vidéos de la Playlist</h2>
+                <p id="sectionDescription">Toutes les vidéos de cette collection</p>
+                <a href="videos.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Retour aux vidéos
+                </a>
+            </div>
+            
+            <!-- Lecteur vidéo intégré -->
+            <div class="video-player-container" id="videoPlayerContainer" style="display: none;">
+                <div class="video-player-header">
+                    <h3 id="videoPlayerTitle">Titre de la vidéo</h3>
+                    <button class="close-player" onclick="closeVideoPlayer()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="video-player-embed" id="videoPlayerEmbed">
+                    <!-- L'iframe sera injecté ici -->
+                </div>
+                <div class="video-player-info">
+                    <p id="videoPlayerDescription">Description de la vidéo</p>
+                    <div class="video-player-meta" id="videoPlayerMeta">
+                        <!-- Métadonnées de la vidéo -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="videos-grid" id="videosGrid">
+                <!-- Les vidéos seront chargées dynamiquement ici -->
+            </div>
+            
+            <div class="no-videos" id="noVideos" style="display: none;">
+                <div class="no-videos-content">
+                    <i class="fas fa-list"></i>
+                    <h3>Aucune vidéo dans cette playlist</h3>
+                    <p>Cette playlist ne contient pas encore de vidéos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>La Route du Cacao</h3>
+                    <p>Une expédition pour rêver, apprendre et agir</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="index.html#mission">Notre Mission</a></li>
+                        <li><a href="index.html#expedition">Nos Expéditions</a></li>
+                        <li><a href="index.html#equipage">L'Équipage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Informations</h4>
+                    <ul>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 La Route du Cacao. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Charger les informations de la playlist
+        function loadPlaylistInfo() {
+            const playlistId = localStorage.getItem('currentPlaylistId');
+            const adminPlaylists = JSON.parse(localStorage.getItem('adminPlaylists')) || [
+                { id: 'recherche', name: 'Recherche Scientifique', description: 'Relevés environnementaux et études marines' },
+                { id: 'rencontres', name: 'Rencontres Humaines', description: 'Portraits et témoignages inspirants' },
+                { id: 'solutions', name: 'Solutions Durables', description: 'Innovations écologiques documentées' },
+                { id: 'vie-bord', name: 'Vie à Bord', description: 'Le quotidien de notre équipage' }
+            ];
+            
+            const playlist = adminPlaylists.find(p => p.id === playlistId);
+            
+            if (playlist) {
+                document.getElementById('playlistTitle').textContent = playlist.name;
+                document.getElementById('playlistDescription').textContent = playlist.description;
+                document.getElementById('sectionTitle').textContent = `Vidéos - ${playlist.name}`;
+                document.getElementById('sectionDescription').textContent = playlist.description;
+                document.title = `${playlist.name} - La Route du Cacao`;
+            }
+        }
+
+        // Charger les vidéos de la playlist
+        function loadPlaylistVideos() {
+            const playlistId = localStorage.getItem('currentPlaylistId');
+            const videos = JSON.parse(localStorage.getItem('adminVideos')) || [];
+            const videosGrid = document.getElementById('videosGrid');
+            const noVideos = document.getElementById('noVideos');
+            
+            // Filtrer les vidéos par playlist
+            const filteredVideos = videos.filter(video => video.playlist === playlistId);
+            
+            if (filteredVideos.length === 0) {
+                videosGrid.style.display = 'none';
+                noVideos.style.display = 'block';
+                return;
+            }
+            
+            videosGrid.style.display = 'grid';
+            noVideos.style.display = 'none';
+            
+            // Trier les vidéos par date (plus récentes en premier)
+            const sortedVideos = filteredVideos.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            videosGrid.innerHTML = sortedVideos.map(video => `
+                <div class="video-card" onclick="playVideo(${JSON.stringify(video).replace(/"/g, '&quot;')})">
+                    <div class="video-thumbnail">
+                        ${video.thumbnailUrl ? 
+                            `<img src="${video.thumbnailUrl}" alt="${video.title}" onerror="this.parentElement.innerHTML='<div class=\\'video-placeholder\\'><i class=\\'fas fa-play-circle\\'></i><span>Vidéo</span></div>'">` :
+                            `<div class="video-placeholder">
+                                <i class="fas fa-play-circle"></i>
+                                <span>Vidéo</span>
+                            </div>`
+                        }
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>${video.title}</h3>
+                        <p>${video.description}</p>
+                        <div class="video-meta">
+                            <span class="video-platform">${video.platform.toUpperCase()}</span>
+                            <span class="video-date">${new Date(video.date).toLocaleDateString()}</span>
+                            ${video.duration ? `<span class="video-duration">${video.duration}</span>` : ''}
+                        </div>
+                        ${video.tags && video.tags.length > 0 ? `
+                            <div class="video-tags">
+                                ${video.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Fonction pour lire une vidéo
+        function playVideo(video) {
+            const container = document.getElementById('videoPlayerContainer');
+            const title = document.getElementById('videoPlayerTitle');
+            const description = document.getElementById('videoPlayerDescription');
+            const embed = document.getElementById('videoPlayerEmbed');
+            const meta = document.getElementById('videoPlayerMeta');
+            
+            // Mettre à jour les informations
+            title.textContent = video.title;
+            description.textContent = video.description;
+            
+            // Créer l'iframe selon la plateforme
+            let embedUrl = '';
+            
+            // Utiliser l'ID vidéo stocké, sinon essayer de l'extraire
+            let videoId = video.videoId;
+            if (!videoId) {
+                videoId = extractVideoIdFromUrl(video.videoUrl, video.platform);
+            }
+            
+            console.log('Video URL:', video.videoUrl);
+            console.log('Platform:', video.platform);
+            console.log('Stored ID:', video.videoId);
+            console.log('Extracted ID:', videoId);
+            
+            switch(video.platform) {
+                case 'youtube':
+                    if (videoId) {
+                        embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
+                    } else {
+                        // Fallback : essayer de convertir l'URL YouTube
+                        embedUrl = video.videoUrl.replace('watch?v=', 'embed/').replace('youtu.be/', 'youtube.com/embed/') + '?autoplay=1&rel=0&modestbranding=1&showinfo=0';
+                    }
+                    break;
+                case 'vimeo':
+                    if (videoId) {
+                        embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+                    } else {
+                        embedUrl = video.videoUrl;
+                    }
+                    break;
+                case 'dailymotion':
+                    if (videoId) {
+                        embedUrl = `https://www.dailymotion.com/embed/video/${videoId}?autoplay=1`;
+                    } else {
+                        embedUrl = video.videoUrl;
+                    }
+                    break;
+                default:
+                    embedUrl = video.videoUrl;
+            }
+            
+            console.log('Final embed URL:', embedUrl);
+            
+            // Solution alternative : afficher l'URL et permettre la lecture
+            embed.innerHTML = `
+                <div style="background: #000; color: white; padding: 40px; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <div style="margin-bottom: 20px;">
+                        <i class="fas fa-play-circle" style="font-size: 4rem; color: #FFD700; margin-bottom: 20px;"></i>
+                        <h3 style="color: white; margin-bottom: 15px;">${video.title}</h3>
+                        <p style="color: #ccc; margin-bottom: 25px;">${video.description}</p>
+                    </div>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                        <a href="${embedUrl}" target="_blank" class="btn btn-primary" style="background: #FF0000; border: none; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                            <i class="fab fa-youtube"></i> Lire sur YouTube
+                        </a>
+                        <a href="${video.videoUrl}" target="_blank" class="btn btn-secondary" style="background: #333; border: none; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                            <i class="fas fa-external-link-alt"></i> Ouvrir l'original
+                        </a>
+                    </div>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 20px;">
+                        <i class="fas fa-info-circle"></i> 
+                        La lecture intégrée est temporairement désactivée pour des raisons techniques.
+                    </p>
+                </div>
+            `;
+            
+            // Métadonnées
+            meta.innerHTML = `
+                <div class="video-meta">
+                    <span class="video-platform">${video.platform.toUpperCase()}</span>
+                    <span class="video-date">${new Date(video.date).toLocaleDateString()}</span>
+                    ${video.duration ? `<span class="video-duration">${video.duration}</span>` : ''}
+                </div>
+                ${video.tags && video.tags.length > 0 ? `
+                    <div class="video-tags">
+                        ${video.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                ` : ''}
+            `;
+            
+            // Afficher le lecteur
+            container.style.display = 'block';
+            
+            // Scroll vers le lecteur
+            container.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Fonction pour extraire l'ID vidéo d'une URL
+        function extractVideoIdFromUrl(url, platform) {
+            try {
+                if (!url) return null;
+                
+                switch(platform) {
+                    case 'youtube':
+                        // Support pour différents formats YouTube
+                        const youtubePatterns = [
+                            /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+                            /youtube\.com\/watch\?.*v=([^&\n?#]+)/,
+                            /youtu\.be\/([^&\n?#]+)/
+                        ];
+                        
+                        for (let pattern of youtubePatterns) {
+                            const match = url.match(pattern);
+                            if (match) return match[1];
+                        }
+                        return null;
+                        
+                    case 'vimeo':
+                        const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+                        return vimeoMatch ? vimeoMatch[1] : null;
+                        
+                    case 'dailymotion':
+                        const dailymotionMatch = url.match(/dailymotion\.com\/video\/([^&\n?#]+)/);
+                        return dailymotionMatch ? dailymotionMatch[1] : null;
+                        
+                    default:
+                        return null;
+                }
+            } catch (e) {
+                console.error('Erreur extraction ID vidéo:', e);
+                return null;
+            }
+        }
+
+        // Fonction pour fermer le lecteur
+        function closeVideoPlayer() {
+            const container = document.getElementById('videoPlayerContainer');
+            const embed = document.getElementById('videoPlayerEmbed');
+            
+            // Vider l'iframe pour arrêter la vidéo
+            embed.innerHTML = '';
+            
+            // Masquer le lecteur
+            container.style.display = 'none';
+        }
+
+        // Charger les données au chargement de la page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPlaylistInfo();
+            loadPlaylistVideos();
+        });
+    </script>
+</body>
+</html> 

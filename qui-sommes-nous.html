@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qui Sommes Nous - La Route du Cacao</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <img src="images/partenaire3.png" alt="Partenaire" style="height:38px;width:auto;margin-right:1rem;vertical-align:middle;">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-ship"></i>
+                <span>La Route du Cacao</span>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle active">
+                        Présentation
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="qui-sommes-nous.html" class="active">Qui Sommes Nous</a></li>
+                        <li><a href="notre-equipe.html">Notre Équipe</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Projet
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html#mission">Notre Mission</a></li>
+                        <li><a href="index.html#expedition">Nos Expéditions</a></li>
+                        <li><a href="index.html#equipage">L'Équipage</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Réseau
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html#partenaires">Partenaires</a></li>
+                        <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        <li><a href="presse.html">Presse</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="jeux-concours.html">Jeux & Concours</a>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="index.html#contact" class="dropdown-toggle">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+            <a href="videos.html" class="btn btn-primary nav-video-btn">
+                <i class="fas fa-play"></i>
+                Vidéo
+            </a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content page-centered">
+                <div class="header-main">
+                    <h1>Qui Sommes Nous</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Présentation -->
+    <section class="section">
+        <div class="container">
+            <div class="presentation-content">
+                <div class="presentation-text">
+                    <h2>Une Collaboration Unique</h2>
+                    <p class="presentation-intro">La Route du Cacao naît de la fusion entre <strong>GaiaLyss</strong> et l'association <strong>Par l'Amour des Abeilles</strong>, deux entités engagées pour un monde plus durable.</p>
+                    <p class="presentation-vision">Ensemble, nous portons un rêve commun : <strong>réenchanter le monde par l'action, l'éducation et la coopération.</strong></p>
+                    <p>Cette collaboration unique rassemble des passionnés, des entreprises, des volontaires, des marins, des pédagogues, des scientifiques, des réalisateurs et des citoyens engagés autour d'un projet fédérateur, vivant, profondément humain.</p>
+                </div>
+                <div class="presentation-images">
+                    <div class="collaboration-logos">
+                        <div class="logo-item">
+                            <a href="https://fpformation.fr/" target="_blank" class="logo-link">
+                                <img src="images/gaia.jpg" alt="Gaialyss" class="collaboration-logo">
+                                <h3>Gaialyss</h3>
+                                <p>Entreprise d'ingénierie écologique</p>
+                            </a>
+                        </div>
+                        <div class="logo-item">
+                            <button class="logo-link" id="openBeeModal" style="background:none;border:none;padding:0;cursor:pointer;">
+                                <img src="images/abeille.jpg" alt="Par l'Amour des Abeilles" class="collaboration-logo">
+                                <h3>Par l'Amour des Abeilles</h3>
+                                <p>Association de protection de la biodiversité</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Nos Forces -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>✨ Nos Forces</h2>
+                <p>Ce qui fait la singularité de notre approche</p>
+            </div>
+            <div class="forces-grid">
+                <div class="forces-row">
+                    <div class="force-item">
+                        <div class="force-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Équipe Intergénérationnelle</h3>
+                        <p>Une équipe engagée à 100% avec des profils variés et complémentaires</p>
+                    </div>
+                    <div class="force-item">
+                        <div class="force-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Ancrage Territorial</h3>
+                        <p>Un ancrage territorial fort, en France comme à l'international</p>
+                    </div>
+                    <div class="force-item">
+                        <div class="force-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Vision Régénérative</h3>
+                        <p>Une vision joyeuse, systémique et régénérative de la transition</p>
+                    </div>
+                </div>
+                <div class="forces-row forces-row-2">
+                    <div class="force-item">
+                        <div class="force-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3>Contenus Exclusifs</h3>
+                        <p>Des contenus exclusifs pour vos équipes et vos clients</p>
+                    </div>
+                    <div class="force-item">
+                        <div class="force-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Visibilité Internationale</h3>
+                        <p>Une visibilité nationale et internationale (voiliers, documentaires, médias)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Philosophie -->
+    <section class="section">
+        <div class="container">
+            <div class="philosophy-content">
+                <div class="philosophy-text">
+                    <h2>Notre Philosophie</h2>
+                    <p class="philosophy-quote">Nous croyons aux ponts entre les mondes.</p>
+                    <p>Et vous, vous embarquez ?</p>
+                </div>
+                <div class="engagement-levels">
+                    <h3>🎯 Plusieurs niveaux d'engagement :</h3>
+                    <div class="levels-grid">
+                        <div class="level-item">
+                            <span class="level-badge">Contributeur</span>
+                        </div>
+                        <div class="level-item">
+                            <span class="level-badge">Partenaire</span>
+                        </div>
+                        <div class="level-item">
+                            <span class="level-badge">Ambassadeur</span>
+                        </div>
+                        <div class="level-item">
+                            <span class="level-badge">Co-porteur stratégique</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>La Route du Cacao</h3>
+                    <p>Une expédition pour rêver, apprendre et agir</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="index.html#mission">Notre Mission</a></li>
+                        <li><a href="index.html#expedition">Nos Expéditions</a></li>
+                        <li><a href="index.html#equipage">L'Équipage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Informations</h4>
+                    <ul>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 La Route du Cacao. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Bee Card -->
+    <div id="beeModal" class="modal-bee" style="display:none;">
+        <div class="modal-bee-content">
+            <span class="modal-bee-close" id="closeBeeModal">&times;</span>
+            <div class="bee-card-flip" id="beeCardFlip">
+                <div class="bee-card-inner">
+                    <div class="bee-card-front">
+                        <img src="images/cover.jpg" alt="Carte recto" style="width:100%;border-radius:16px;">
+                    </div>
+                    <div class="bee-card-back">
+                        <img src="images/quote.jpg" alt="Carte verso" style="width:100%;border-radius:16px;">
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex;justify-content:center;gap:1.2rem;margin:2rem auto 0 auto;">
+                <button class="btn btn-primary" id="showBeeForm">Recevoir</button>
+                <button class="btn btn-secondary" id="showBeeRib">Faire un don</button>
+            </div>
+            <div id="donTypeChoice" style="display:none;justify-content:center;gap:0.5rem;margin:0.8rem 0 0 0;">
+                <button class="btn btn-primary" id="donTypeFinancier">Financier</button>
+                <button class="btn btn-primary" id="donTypeTemps">Temps</button>
+                <button class="btn btn-primary" id="donTypeCompetence">Compétence</button>
+            </div>
+            <form id="beeForm" style="display:none;margin-top:0.8rem;max-width:280px;margin-left:auto;margin-right:auto;padding:0.3em 0.3em 0.5em 0.3em;box-sizing:border-box;">
+                <div class="form-group" style="margin-bottom:0.3em;">
+                    <input type="text" id="beeNom" name="nom" placeholder="Nom" required style="width:100%;margin-bottom:0.2em;">
+                </div>
+                <div class="form-group" style="margin-bottom:0.3em;">
+                    <input type="text" id="beePrenom" name="prenom" placeholder="Prénom" required style="width:100%;margin-bottom:0.2em;">
+                </div>
+                <div class="form-group" style="margin-bottom:0.3em;">
+                    <input type="email" id="beeEmail" name="email" placeholder="Email" required style="width:100%;margin-bottom:0.2em;">
+                </div>
+                <div class="form-group" style="margin-bottom:0.3em;">
+                    <input type="tel" id="beeTel" name="tel" placeholder="Numéro de portable" required style="width:100%;margin-bottom:0.2em;">
+                </div>
+                <div class="form-group" style="margin-bottom:0.3em;">
+                    <input type="text" id="beePays" name="pays" placeholder="Pays" required style="width:100%;margin-bottom:0.2em;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Envoyer</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animation des cartes au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.member-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Modal Bee Card logic
+        const openBeeModal = document.getElementById('openBeeModal');
+        const beeModal = document.getElementById('beeModal');
+        const closeBeeModal = document.getElementById('closeBeeModal');
+        const beeCardFlip = document.getElementById('beeCardFlip');
+        const showBeeForm = document.getElementById('showBeeForm');
+        const beeForm = document.getElementById('beeForm');
+        const beeModalContent = document.querySelector('.modal-bee-content');
+        const showBeeRib = document.getElementById('showBeeRib');
+        const donTypeChoice = document.getElementById('donTypeChoice');
+        const donTypeFinancier = document.getElementById('donTypeFinancier');
+        const donTypeTemps = document.getElementById('donTypeTemps');
+        const donTypeCompetence = document.getElementById('donTypeCompetence');
+
+        if(openBeeModal && beeModal && closeBeeModal && beeCardFlip && showBeeForm && beeForm && beeModalContent && showBeeRib) {
+            openBeeModal.onclick = () => {
+                beeModal.style.display = 'flex';
+                beeForm.style.display = 'none';
+                showBeeForm.style.display = 'block';
+                showBeeRib.style.display = 'block';
+                donTypeChoice.style.display = 'none';
+                beeModalContent.classList.remove('compact');
+                const ribImg = document.getElementById('beeRibImg');
+                if(ribImg) ribImg.remove();
+                showBeeRib.disabled = false;
+            };
+            closeBeeModal.onclick = () => { beeModal.style.display = 'none'; beeForm.style.display = 'none'; beeModalContent.classList.remove('compact'); };
+            beeModal.onclick = (e) => { if(e.target === beeModal) { beeModal.style.display = 'none'; beeForm.style.display = 'none'; beeModalContent.classList.remove('compact'); } };
+            showBeeForm.onclick = () => {
+                beeForm.style.display = 'block';
+                showBeeForm.style.display = 'none';
+                showBeeRib.style.display = 'block';
+                donTypeChoice.style.display = 'none';
+                beeModalContent.classList.add('compact');
+                const ribImg = document.getElementById('beeRibImg');
+                if(ribImg) ribImg.remove();
+                showBeeRib.disabled = false;
+            };
+            showBeeRib.onclick = () => {
+                beeForm.style.display = 'none';
+                showBeeForm.style.display = 'block';
+                showBeeRib.style.display = 'block';
+                donTypeChoice.style.display = 'flex';
+                beeModalContent.classList.add('compact');
+                const ribImg = document.getElementById('beeRibImg');
+                if(ribImg) ribImg.remove();
+                showBeeRib.disabled = false;
+            };
+            donTypeFinancier.onclick = () => {
+                beeForm.style.display = 'none';
+                donTypeChoice.style.display = 'none';
+                beeForm.insertAdjacentHTML('afterend', '<div id="beeRibImg" style="text-align:center;margin:1.5em 0;"><img src="images/rib.jpg" alt="RIB" style="max-width:100%;border-radius:12px;"></div>');
+            };
+            donTypeTemps.onclick = () => {
+                beeForm.style.display = 'none';
+                donTypeChoice.style.display = 'none';
+                const ribImg = document.getElementById('beeRibImg');
+                if(ribImg) ribImg.remove();
+                beeForm.insertAdjacentHTML('afterend', '<div id="beeRibImg" style="text-align:center;margin:1.5em 0;font-size:1.1em;">Merci pour votre envie de donner du temps !<br>Contactez-nous à <a href="mailto:contact@larouteducacao.fr">contact@larouteducacao.fr</a></div>');
+            };
+            donTypeCompetence.onclick = () => {
+                beeForm.style.display = 'none';
+                donTypeChoice.style.display = 'none';
+                const ribImg = document.getElementById('beeRibImg');
+                if(ribImg) ribImg.remove();
+                beeForm.insertAdjacentHTML('afterend', '<div id="beeRibImg" style="text-align:center;margin:1.5em 0;font-size:1.1em;">Merci pour votre envie de partager vos compétences !<br>Contactez-nous à <a href="mailto:contact@larouteducacao.fr">contact@larouteducacao.fr</a></div>');
+            };
+            beeForm.onsubmit = (e) => {
+                e.preventDefault();
+                beeForm.innerHTML = '<div style="text-align:center;padding:1.5em 0;">Merci, nous avons bien reçu votre demande !</div>';
+            };
+        }
+    });
+    </script>
+</body>
+</html>
