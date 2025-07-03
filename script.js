@@ -1,6 +1,6 @@
 // EmailJS Configuration
 (function() {
-    emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // À remplacer par votre clé EmailJS
+    emailjs.init("C7e5GOWi_3WRRYN_D"); // Clé publique EmailJS
 })();
 
 // Navigation mobile
@@ -199,7 +199,7 @@ function sendFormEmail(formData, formType) {
         message: formatFormMessage(formData, formType)
     };
 
-    return emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+    return emailjs.send('service_pz6ywo8', 'template_ggvli9r', templateParams)
         .then(function(response) {
             console.log('Email envoyé avec succès:', response);
             return { success: true, message: 'Message envoyé avec succès !' };
