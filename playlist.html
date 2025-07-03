@@ -12,21 +12,72 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <i class="fas fa-ship"></i>
-                <span>La Route du Cacao</span>
-            </a>
+            <div class="header-left" style="display:flex;align-items:center;">
+                <img src="images/partenaire3.png" alt="Partenaire" style="height:38px;width:auto;margin-right:1rem;vertical-align:middle;">
+                <a href="index.html" class="nav-logo">
+                    <i class="fas fa-ship"></i>
+                    <span>La Route du Cacao</span>
+                </a>
+            </div>
             <ul class="nav-menu">
-                <li><a href="index.html#mission">Notre Mission</a></li>
-                <li><a href="index.html#expedition">Nos Expéditions</a></li>
-                <li><a href="index.html#equipage">L'Équipage</a></li>
-                <li><a href="index.html#partenaires">Partenaires</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle" data-translate="presentation">
+                        Présentation
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="qui-sommes-nous.html" data-translate="qui-sommes-nous">Qui Sommes Nous</a></li>
+                        <li><a href="notre-equipe.html" data-translate="notre-equipe">Notre Équipe</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle" data-translate="projet">
+                        Projet
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html#mission" data-translate="notre-mission">Notre Mission</a></li>
+                        <li><a href="index.html#expedition" data-translate="nos-expeditions">Nos Expéditions</a></li>
+                        <li><a href="index.html#equipage" data-translate="lequipage">L'Équipage</a></li>
+                        <li><a href="rse.html">RSE</a></li>
+                        <li><a href="odd.html">ODD</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle" data-translate="reseau">
+                        Réseau
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html#partenaires" data-translate="partenaires">Partenaires</a></li>
+                        <li><a href="devenir-partenaire.html" data-translate="devenir-partenaire">Devenir Partenaire</a></li>
+                        <li><a href="presse.html" data-translate="presse">Presse</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="jeux-concours.html" data-translate="jeux-concours">Jeux & Concours</a>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="index.html#contact" class="dropdown-toggle" data-translate="contact">
+                        Contact
+                    </a>
+                </li>
             </ul>
-            <a href="videos.html" class="btn btn-primary nav-video-btn">
-                <i class="fas fa-play"></i>
-                Vidéo
-            </a>
+            <div id="lang-switcher" style="position:relative;display:flex;align-items:center;margin-left:1.2rem;margin-right:1.2rem;">
+                <button id="langActiveBtn" style="background:none;border:none;cursor:pointer;padding:0;"><img id="langActiveFlag" src="https://flagcdn.com/fr.svg" alt="Langue" style="width:26px;height:18px;vertical-align:middle;"></button>
+                <div id="langDropdown" style="display:none;position:absolute;top:120%;left:0;background:#fff;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,0.13);padding:0.3rem 0;z-index:999;min-width:40px;">
+                    <button class="langDropBtn" data-lang="en" style="background:none;border:none;cursor:pointer;padding:0.2rem 0.7rem;width:100%;display:block;"><img src="https://flagcdn.com/gb.svg" alt="EN" style="width:26px;height:18px;vertical-align:middle;"></button>
+                    <button class="langDropBtn" data-lang="es" style="background:none;border:none;cursor:pointer;padding:0.2rem 0.7rem;width:100%;display:block;"><img src="https://flagcdn.com/es.svg" alt="ES" style="width:26px;height:18px;vertical-align:middle;"></button>
+                    <button class="langDropBtn" data-lang="fr" style="background:none;border:none;cursor:pointer;padding:0.2rem 0.7rem;width:100%;display:block;"><img src="https://flagcdn.com/fr.svg" alt="FR" style="width:26px;height:18px;vertical-align:middle;"></button>
+                </div>
+            </div>
+            <div class="header-right" style="display:flex;align-items:center;gap:1.2rem;margin-left:auto;">
+                <a href="videos.html" class="btn btn-primary nav-video-btn">
+                    <i class="fas fa-play"></i>
+                    <span data-translate="video">Vidéo</span>
+                </a>
+                <button id="helpBtn" class="btn btn-help" data-translate="help">HELP</button>
+            </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -128,6 +179,7 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
     <script>
         // Charger les informations de la playlist

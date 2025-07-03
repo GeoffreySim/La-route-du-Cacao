@@ -1,3 +1,8 @@
+// EmailJS Configuration
+(function() {
+    emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // À remplacer par votre clé EmailJS
+})();
+
 // Navigation mobile
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -158,13 +163,23 @@ if (contactForm) {
             return;
         }
         
-        // Simulation d'envoi
+        // Envoi par EmailJS
         showNotification('Envoi en cours...', 'info');
         
-        setTimeout(() => {
-            showNotification('Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.', 'success');
-            this.reset();
-        }, 2000);
+        const formData = { name, email, phone, message };
+        sendFormEmail(formData, 'contact')
+            .then(result => {
+                if (result.success) {
+                    showNotification('Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.', 'success');
+                    this.reset();
+                } else {
+                    showNotification('Erreur lors de l\'envoi. Veuillez réessayer.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                showNotification('Erreur lors de l\'envoi. Veuillez réessayer.', 'error');
+            });
     });
 }
 
@@ -172,6 +187,63 @@ if (contactForm) {
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+// Fonction pour envoyer les formulaires par email
+function sendFormEmail(formData, formType) {
+    const templateParams = {
+        to_email: 'contact@larouteducacao.org',
+        from_name: formData.name || formData.nom || 'Visiteur',
+        from_email: formData.email || formData.mail || 'noreply@larouteducacao.org',
+        subject: `Nouveau message - ${formType}`,
+        message: formatFormMessage(formData, formType)
+    };
+
+    return emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+            console.log('Email envoyé avec succès:', response);
+            return { success: true, message: 'Message envoyé avec succès !' };
+        })
+        .catch(function(error) {
+            console.error('Erreur lors de l\'envoi:', error);
+            return { success: false, message: 'Erreur lors de l\'envoi du message.' };
+        });
+}
+
+// Fonction pour formater le message selon le type de formulaire
+function formatFormMessage(formData, formType) {
+    let message = `Nouveau message reçu via le site web\n\n`;
+    message += `Type de formulaire: ${formType}\n`;
+    message += `Date: ${new Date().toLocaleString('fr-FR')}\n\n`;
+
+    switch(formType) {
+        case 'contact':
+            message += `Nom: ${formData.name || 'Non renseigné'}\n`;
+            message += `Email: ${formData.email || 'Non renseigné'}\n`;
+            message += `Téléphone: ${formData.phone || 'Non renseigné'}\n`;
+            message += `Message: ${formData.message || 'Non renseigné'}\n`;
+            break;
+        case 'partenaire':
+            message += `Organisation: ${formData.nom || 'Non renseigné'}\n`;
+            message += `Secteur: ${formData.secteur || 'Non renseigné'}\n`;
+            message += `Nom contact: ${formData.contact || 'Non renseigné'}\n`;
+            message += `Email: ${formData.mail || 'Non renseigné'}\n`;
+            message += `Téléphone: ${formData.telephone || 'Non renseigné'}\n`;
+            message += `Type partenariat: ${formData.type || 'Non renseigné'}\n`;
+            message += `Budget: ${formData.budget || 'Non renseigné'}\n`;
+            message += `Projet: ${formData.projet || 'Non renseigné'}\n`;
+            break;
+        case 'bee-card':
+            message += `Nom: ${formData.nom || 'Non renseigné'}\n`;
+            message += `Email: ${formData.email || 'Non renseigné'}\n`;
+            message += `Pays: ${formData.pays || 'Non renseigné'}\n`;
+            message += `Message: ${formData.message || 'Non renseigné'}\n`;
+            break;
+        default:
+            message += `Données reçues: ${JSON.stringify(formData, null, 2)}\n`;
+    }
+
+    return message;
 }
 
 // Système de notification
@@ -406,148 +478,336 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// === TRADUCTION DYNAMIQUE ===
+// Système de traduction complet
 const translations = {
-  fr: {
-    nav: [
-      'Présentation', 'Projet', 'Réseau', 'Jeux & Concours', 'Contact', 'Vidéo',
-      'Qui Sommes Nous', 'Notre Équipe', 'Notre Mission', 'Nos Expéditions', "L'Équipage", 'RSE', 'ODD', 'Presse'
-    ],
-    heroTitle: 'La Route du Cacao',
-    heroSubtitle: 'Une expédition pour rêver, apprendre et agir',
-    heroDesc: "2 bateaux légendaires, 1 génération d'espoirs, 2 continents de solutions. Une odyssée humaine et écologique à travers 12 pays d'Amérique latine.",
-    heroBtn1: 'Découvrir',
-    heroBtn2: 'Nous Rejoindre',
-    // Ajoute ici d'autres textes à traduire si besoin
-  },
-  en: {
-    nav: [
-      'Presentation', 'Project', 'Network', 'Games & Contests', 'Contact', 'Video',
-      'About Us', 'Our Team', 'Our Mission', 'Our Expeditions', 'The Crew', 'CSR', 'SDGs', 'Press'
-    ],
-    heroTitle: 'The Cocoa Route',
-    heroSubtitle: 'An expedition to dream, learn and act',
-    heroDesc: '2 legendary boats, 1 generation of hope, 2 continents of solutions. A human and ecological odyssey through 12 Latin American countries.',
-    heroBtn1: 'Discover',
-    heroBtn2: 'Join Us',
-  },
-  es: {
-    nav: [
-      'Presentación', 'Proyecto', 'Red', 'Juegos y Concursos', 'Contacto', 'Vídeo',
-      'Quiénes Somos', 'Nuestro Equipo', 'Nuestra Misión', 'Nuestras Expediciones', 'La Tripulación', 'RSE', 'ODS', 'Prensa'
-    ],
-    heroTitle: 'La Ruta del Cacao',
-    heroSubtitle: 'Una expedición para soñar, aprender y actuar',
-    heroDesc: '2 barcos legendarios, 1 generación de esperanzas, 2 continentes de soluciones. Una odisea humana y ecológica a través de 12 países de América Latina.',
-    heroBtn1: 'Descubrir',
-    heroBtn2: 'Únete',
-  }
+    fr: {
+        // Navigation
+        'presentation': 'Présentation',
+        'qui-sommes-nous': 'Qui Sommes Nous',
+        'notre-equipe': 'Notre Équipe',
+        'projet': 'Projet',
+        'notre-mission': 'Notre Mission',
+        'nos-expeditions': 'Nos Expéditions',
+        'lequipage': 'L\'Équipage',
+        'reseau': 'Réseau',
+        'partenaires': 'Partenaires',
+        'devenir-partenaire': 'Devenir Partenaire',
+        'presse': 'Presse',
+        'jeux-concours': 'Jeux & Concours',
+        'contact': 'Contact',
+        'video': 'Vidéo',
+        'help': 'HELP',
+        
+        // Page d'accueil
+        'hero-title': 'La Route du Cacao',
+        'hero-subtitle': 'Une expédition pour rêver, apprendre et agir',
+        'mission-title': 'Notre Mission',
+        'mission-subtitle': 'Mettre la lumière sur l\'écologie positive et active',
+        'mission-heading': 'Une Renaissance Bleue pour une Cause Verte',
+        'mission-text-1': 'À Brest, deux IMOCA mythiques reprennent la mer, restaurés, transformés, ils voguent vers un nouveau récit : celui d\'un monde en transition.',
+        'mission-text-2': 'À leur bord, une équipe d\'étudiants engagés en énergie, écologie, architecture et audiovisuel, sélectionnés pour la pertinence de leur projet et passionnés par la rencontre et la transmission.',
+        'bateaux-imoca': 'Bateaux IMOCA',
+        'pays-traverses': 'Pays traversés',
+        'mois-expedition': 'Mois d\'expédition',
+        
+        // Expéditions
+        'expeditions-title': 'Nos Expéditions',
+        'chantier-naval': 'Chantier Naval',
+        'chantier-date': 'Juil. 2025 - Mars 2026',
+        'chantier-desc': 'Restauration de nos 2 IMOCA mythiques transformés en laboratoires flottants pour l\'économie bleue.',
+        'appel-projets': 'Appel à Projets',
+        'appel-date': 'Sept. 2025 - Mai 2026',
+        'appel-desc': 'Sélection de 12 étudiants ambassadeurs pour documenter les solutions durables locales.',
+        'tours-europe': 'Tours d\'Europe',
+        'tours-date': 'Mars 2026 - Août 2026',
+        'tours-desc': '33 escales en Europe pour partager le rêve, rencontrer, inspirer et rassembler.',
+        'expedition-transatlantique': 'Expédition Transatlantique',
+        'expedition-date': 'Oct. 2026 - Avril 2027',
+        'expedition-desc': 'Odyssée humaine et écologique à travers 12 pays d\'Amérique latine.',
+        
+        // Équipage
+        'equipage-title': 'L\'Équipage',
+        'equipage-subtitle': 'Une équipe d\'étudiants engagés pour la transition écologique',
+        'laureats-bateau': '8 Lauréats par Bateau',
+        'laureats-desc': 'Étudiants sélectionnés en énergie, écologie, architecture et audiovisuel pour documenter les solutions durables.',
+        'recherche-scientifique': 'Recherche Scientifique',
+        'recherche-desc': 'Partenariat avec l\'IFREMER pour des relevés environnementaux : température, biodiversité marine, pollution plastique.',
+        'documentaire-immersif': 'Documentaire Immersif',
+        'documentaire-desc': 'Mini-séries, carnets de bord, capsules vidéo pour partager l\'aventure et inspirer l\'action.',
+        
+        // Partenaires
+        'partenaires-title': 'Partenaires RSE & Collaborations',
+        'partenaires-subtitle': 'Un écosystème d\'acteurs engagés pour la transition écologique',
+        'devenir-partenaire-btn': 'Devenir Partenaire',
+        'partenaires-cta': 'Rejoignez notre écosystème d\'acteurs engagés pour la transition écologique',
+        
+        // Footer
+        'footer-tagline': 'Une expédition pour rêver, apprendre et agir',
+        'liens-rapides': 'Liens Rapides',
+        'accueil': 'Accueil',
+        'informations': 'Informations',
+        'mentions-legales': 'Mentions légales',
+        'politique-confidentialite': 'Politique de confidentialité',
+        'cgv': 'CGV',
+        'faq': 'FAQ',
+        'votre-nom': 'Votre nom',
+        'votre-email': 'Votre email',
+        'votre-message': 'Votre message',
+        'envoyer': 'Envoyer',
+        'copyright': '© 2024 La Route du Cacao. Tous droits réservés.',
+        'site-realise-par': 'Site réalisé par',
+        
+        // Popup construction
+        'construction-title': '🚧 Site en cours de finalisation 🚧',
+        'construction-text': 'Nous travaillons actuellement sur la finalisation de notre site web. Certaines fonctionnalités peuvent encore être en cours de développement.',
+        'construction-thanks': 'Merci de votre patience !',
+        'construction-btn': 'Compris, continuer',
+        
+        // HELP popup
+        'help-title': 'Aidez-nous !',
+        'help-btn': 'Donner un coup de main'
+    },
+    
+    en: {
+        // Navigation
+        'presentation': 'Presentation',
+        'qui-sommes-nous': 'Who We Are',
+        'notre-equipe': 'Our Team',
+        'projet': 'Project',
+        'notre-mission': 'Our Mission',
+        'nos-expeditions': 'Our Expeditions',
+        'lequipage': 'The Crew',
+        'reseau': 'Network',
+        'partenaires': 'Partners',
+        'devenir-partenaire': 'Become a Partner',
+        'presse': 'Press',
+        'jeux-concours': 'Games & Contests',
+        'contact': 'Contact',
+        'video': 'Video',
+        'help': 'HELP',
+        
+        // Page d'accueil
+        'hero-title': 'The Chocolate Route',
+        'hero-subtitle': 'An expedition to dream, learn and act',
+        'mission-title': 'Our Mission',
+        'mission-subtitle': 'Shining a light on positive and active ecology',
+        'mission-heading': 'A Blue Renaissance for a Green Cause',
+        'mission-text-1': 'In Brest, two mythical IMOCAs return to sea, restored, transformed, they sail towards a new narrative: that of a world in transition.',
+        'mission-text-2': 'On board, a team of students committed to energy, ecology, architecture and audiovisual, selected for the relevance of their project and passionate about meeting and transmission.',
+        'bateaux-imoca': 'IMOCA Boats',
+        'pays-traverses': 'Countries crossed',
+        'mois-expedition': 'Months of expedition',
+        
+        // Expéditions
+        'expeditions-title': 'Our Expeditions',
+        'chantier-naval': 'Shipyard',
+        'chantier-date': 'Jul. 2025 - Mar. 2026',
+        'chantier-desc': 'Restoration of our 2 mythical IMOCAs transformed into floating laboratories for the blue economy.',
+        'appel-projets': 'Project Call',
+        'appel-date': 'Sep. 2025 - May 2026',
+        'appel-desc': 'Selection of 12 student ambassadors to document local sustainable solutions.',
+        'tours-europe': 'European Tours',
+        'tours-date': 'Mar. 2026 - Aug. 2026',
+        'tours-desc': '33 stops in Europe to share the dream, meet, inspire and gather.',
+        'expedition-transatlantique': 'Transatlantic Expedition',
+        'expedition-date': 'Oct. 2026 - Apr. 2027',
+        'expedition-desc': 'Human and ecological odyssey across 12 Latin American countries.',
+        
+        // Équipage
+        'equipage-title': 'The Crew',
+        'equipage-subtitle': 'A team of students committed to ecological transition',
+        'laureats-bateau': '8 Laureates per Boat',
+        'laureats-desc': 'Students selected in energy, ecology, architecture and audiovisual to document sustainable solutions.',
+        'recherche-scientifique': 'Scientific Research',
+        'recherche-desc': 'Partnership with IFREMER for environmental surveys: temperature, marine biodiversity, plastic pollution.',
+        'documentaire-immersif': 'Immersive Documentary',
+        'documentaire-desc': 'Mini-series, logbooks, video capsules to share the adventure and inspire action.',
+        
+        // Partenaires
+        'partenaires-title': 'CSR Partners & Collaborations',
+        'partenaires-subtitle': 'An ecosystem of actors committed to ecological transition',
+        'devenir-partenaire-btn': 'Become a Partner',
+        'partenaires-cta': 'Join our ecosystem of actors committed to ecological transition',
+        
+        // Footer
+        'footer-tagline': 'An expedition to dream, learn and act',
+        'liens-rapides': 'Quick Links',
+        'accueil': 'Home',
+        'informations': 'Information',
+        'mentions-legales': 'Legal notice',
+        'politique-confidentialite': 'Privacy policy',
+        'cgv': 'Terms & Conditions',
+        'faq': 'FAQ',
+        'votre-nom': 'Your name',
+        'votre-email': 'Your email',
+        'votre-message': 'Your message',
+        'envoyer': 'Send',
+        'copyright': '© 2024 The Chocolate Route. All rights reserved.',
+        'site-realise-par': 'Website created by',
+        
+        // Popup construction
+        'construction-title': '🚧 Website under construction 🚧',
+        'construction-text': 'We are currently working on finalizing our website. Some features may still be under development.',
+        'construction-thanks': 'Thank you for your patience!',
+        'construction-btn': 'Got it, continue',
+        
+        // HELP popup
+        'help-title': 'Help us!',
+        'help-btn': 'Give a helping hand'
+    },
+    
+    es: {
+        // Navigation
+        'presentation': 'Presentación',
+        'qui-sommes-nous': 'Quiénes Somos',
+        'notre-equipe': 'Nuestro Equipo',
+        'projet': 'Proyecto',
+        'notre-mission': 'Nuestra Misión',
+        'nos-expeditions': 'Nuestras Expediciones',
+        'lequipage': 'La Tripulación',
+        'reseau': 'Red',
+        'partenaires': 'Socios',
+        'devenir-partenaire': 'Convertirse en Socio',
+        'presse': 'Prensa',
+        'jeux-concours': 'Juegos y Concursos',
+        'contact': 'Contacto',
+        'video': 'Vídeo',
+        'help': 'AYUDA',
+        
+        // Page d'accueil
+        'hero-title': 'La Ruta del Cacao',
+        'hero-subtitle': 'Una expedición para soñar, aprender y actuar',
+        'mission-title': 'Nuestra Misión',
+        'mission-subtitle': 'Poner la luz sobre la ecología positiva y activa',
+        'mission-heading': 'Un Renacimiento Azul para una Causa Verde',
+        'mission-text-1': 'En Brest, dos IMOCA míticos vuelven al mar, restaurados, transformados, navegan hacia una nueva narrativa: la de un mundo en transición.',
+        'mission-text-2': 'A bordo, un equipo de estudiantes comprometidos con la energía, ecología, arquitectura y audiovisual, seleccionados por la relevancia de su proyecto y apasionados por el encuentro y la transmisión.',
+        'bateaux-imoca': 'Barcos IMOCA',
+        'pays-traverses': 'Países atravesados',
+        'mois-expedition': 'Meses de expedición',
+        
+        // Expéditions
+        'expeditions-title': 'Nuestras Expediciones',
+        'chantier-naval': 'Astillero',
+        'chantier-date': 'Jul. 2025 - Mar. 2026',
+        'chantier-desc': 'Restauración de nuestros 2 IMOCA míticos transformados en laboratorios flotantes para la economía azul.',
+        'appel-projets': 'Convocatoria de Proyectos',
+        'appel-date': 'Sep. 2025 - May. 2026',
+        'appel-desc': 'Selección de 12 estudiantes embajadores para documentar soluciones sostenibles locales.',
+        'tours-europe': 'Giras Europeas',
+        'tours-date': 'Mar. 2026 - Ago. 2026',
+        'tours-desc': '33 escalas en Europa para compartir el sueño, encontrarse, inspirar y reunir.',
+        'expedition-transatlantique': 'Expedición Transatlántica',
+        'expedition-date': 'Oct. 2026 - Abr. 2027',
+        'expedition-desc': 'Odisea humana y ecológica a través de 12 países de América Latina.',
+        
+        // Équipage
+        'equipage-title': 'La Tripulación',
+        'equipage-subtitle': 'Un equipo de estudiantes comprometidos con la transición ecológica',
+        'laureats-bateau': '8 Laureados por Barco',
+        'laureats-desc': 'Estudiantes seleccionados en energía, ecología, arquitectura y audiovisual para documentar soluciones sostenibles.',
+        'recherche-scientifique': 'Investigación Científica',
+        'recherche-desc': 'Asociación con IFREMER para relevamientos ambientales: temperatura, biodiversidad marina, contaminación plástica.',
+        'documentaire-immersif': 'Documental Inmersivo',
+        'documentaire-desc': 'Miniseries, diarios de a bordo, cápsulas de video para compartir la aventura e inspirar la acción.',
+        
+        // Partenaires
+        'partenaires-title': 'Socios RSE y Colaboraciones',
+        'partenaires-subtitle': 'Un ecosistema de actores comprometidos con la transición ecológica',
+        'devenir-partenaire-btn': 'Convertirse en Socio',
+        'partenaires-cta': 'Únete a nuestro ecosistema de actores comprometidos con la transición ecológica',
+        
+        // Footer
+        'footer-tagline': 'Una expedición para soñar, aprender y actuar',
+        'liens-rapides': 'Enlaces Rápidos',
+        'accueil': 'Inicio',
+        'informations': 'Información',
+        'mentions-legales': 'Aviso legal',
+        'politique-confidentialite': 'Política de privacidad',
+        'cgv': 'Términos y condiciones',
+        'faq': 'FAQ',
+        'votre-nom': 'Tu nombre',
+        'votre-email': 'Tu email',
+        'votre-message': 'Tu mensaje',
+        'envoyer': 'Enviar',
+        'copyright': '© 2024 La Ruta del Cacao. Todos los derechos reservados.',
+        'site-realise-par': 'Sitio web creado por',
+        
+        // Popup construction
+        'construction-title': '🚧 Sitio web en construcción 🚧',
+        'construction-text': 'Actualmente estamos trabajando en la finalización de nuestro sitio web. Algunas funciones pueden estar aún en desarrollo.',
+        'construction-thanks': '¡Gracias por tu paciencia!',
+        'construction-btn': 'Entendido, continuar',
+        
+        // HELP popup
+        'help-title': '¡Ayúdanos!',
+        'help-btn': 'Echar una mano'
+    }
 };
 
-function setLang(lang) {
-  localStorage.setItem('siteLang', lang);
-  applyLang(lang);
+// Fonction de traduction
+function translatePage(lang) {
+    if (!translations[lang]) return;
+    
+    // Mettre à jour l'attribut lang de la page
+    document.documentElement.lang = lang;
+    
+    // Mettre à jour le drapeau actif
+    const langActiveFlag = document.getElementById('langActiveFlag');
+    if (langActiveFlag) {
+        langActiveFlag.src = `https://flagcdn.com/${lang === 'en' ? 'gb' : lang}.svg`;
+    }
+    
+    // Traduire tous les éléments avec data-translate
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang][key]) {
+            element.textContent = translations[lang][key];
+        }
+    });
+    
+    // Traduire les placeholders
+    document.querySelectorAll('input[data-translate-placeholder], textarea[data-translate-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-translate-placeholder');
+        if (translations[lang][key]) {
+            element.placeholder = translations[lang][key];
+        }
+    });
+    
+    // Sauvegarder la langue choisie
+    localStorage.setItem('selectedLanguage', lang);
 }
 
-function applyLang(lang) {
-  const t = translations[lang] || translations.fr;
-  // Menu principal
-  const navMenu = document.querySelectorAll('.nav-menu > li');
-  if(navMenu.length >= 5) {
-    navMenu[0].querySelector('.dropdown-toggle').childNodes[0].nodeValue = t.nav[0] + ' ';
-    navMenu[1].querySelector('.dropdown-toggle').childNodes[0].nodeValue = t.nav[1] + ' ';
-    navMenu[2].querySelector('.dropdown-toggle').childNodes[0].nodeValue = t.nav[2] + ' ';
-    navMenu[3].querySelector('a').textContent = t.nav[3];
-    navMenu[4].querySelector('.dropdown-toggle').childNodes[0].nodeValue = t.nav[4] + ' ';
-  }
-  // Vidéo
-  const videoBtn = document.querySelector('.nav-video-btn');
-  if(videoBtn) videoBtn.childNodes[2].nodeValue = t.nav[5];
-  // Dropdown Présentation
-  const presDropdown = navMenu[0].querySelectorAll('.dropdown-menu a');
-  if(presDropdown.length >= 2) {
-    presDropdown[0].textContent = t.nav[6];
-    presDropdown[1].textContent = t.nav[7];
-  }
-  // Dropdown Projet
-  const projDropdown = navMenu[1].querySelectorAll('.dropdown-menu a');
-  if(projDropdown.length >= 3) {
-    projDropdown[0].textContent = t.nav[8];
-    projDropdown[1].textContent = t.nav[9];
-    projDropdown[2].textContent = t.nav[10];
-    if(projDropdown[3]) projDropdown[3].textContent = t.nav[11];
-    if(projDropdown[4]) projDropdown[4].textContent = t.nav[12];
-    if(projDropdown[5]) projDropdown[5].textContent = t.nav[13];
-  }
-  // Dropdown Réseau
-  const netDropdown = navMenu[2].querySelectorAll('.dropdown-menu a');
-  if(netDropdown.length >= 3) {
-    netDropdown[0].textContent = t.nav[11];
-    netDropdown[1].textContent = t.nav[12];
-    netDropdown[2].textContent = t.nav[13];
-  }
-  // Hero
-  const heroTitle = document.querySelector('.hero-content h1');
-  const heroSubtitle = document.querySelector('.hero-subtitle');
-  const heroDesc = document.querySelector('.hero-description');
-  const heroBtns = document.querySelectorAll('.hero-buttons .btn');
-  if(heroTitle) heroTitle.textContent = t.heroTitle;
-  if(heroSubtitle) heroSubtitle.textContent = t.heroSubtitle;
-  if(heroDesc) heroDesc.textContent = t.heroDesc;
-  if(heroBtns.length >= 2) {
-    heroBtns[0].textContent = t.heroBtn1;
-    heroBtns[1].textContent = t.heroBtn2;
-  }
-}
-
+// Initialiser la traduction au chargement
 document.addEventListener('DOMContentLoaded', function() {
-  // ... existing code ...
-  // Sélecteur de langue (drapeau unique + menu custom)
-  const langActiveBtn = document.getElementById('langActiveBtn');
-  const langActiveFlag = document.getElementById('langActiveFlag');
-  const langDropdown = document.getElementById('langDropdown');
-  if(langActiveBtn && langActiveFlag && langDropdown) {
-    // Appliquer la langue au chargement
-    let lang = localStorage.getItem('siteLang') || 'fr';
-    setLangFlag(lang);
-    applyLang(lang);
-    hideCurrentFlag(lang);
-    langActiveBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      langDropdown.style.display = langDropdown.style.display === 'block' ? 'none' : 'block';
-    });
+    // Récupérer la langue sauvegardée ou utiliser le français par défaut
+    const savedLang = localStorage.getItem('selectedLanguage') || 'fr';
+    translatePage(savedLang);
+    
+    // Gérer les clics sur les boutons de langue
     document.querySelectorAll('.langDropBtn').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const newLang = this.dataset.lang;
-        setLang(newLang);
-        setLangFlag(newLang);
-        hideCurrentFlag(newLang);
-        langDropdown.style.display = 'none';
-      });
+        btn.addEventListener('click', function() {
+            const lang = this.getAttribute('data-lang');
+            translatePage(lang);
+        });
     });
-    document.addEventListener('click', function() {
-      langDropdown.style.display = 'none';
-    });
-  }
+    
+    // Gérer l'ouverture/fermeture du dropdown de langue
+    const langActiveBtn = document.getElementById('langActiveBtn');
+    const langDropdown = document.getElementById('langDropdown');
+    
+    if (langActiveBtn && langDropdown) {
+        langActiveBtn.addEventListener('click', function() {
+            langDropdown.style.display = langDropdown.style.display === 'none' ? 'block' : 'none';
+        });
+        
+        // Fermer le dropdown en cliquant ailleurs
+        document.addEventListener('click', function(e) {
+            if (!langActiveBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+                langDropdown.style.display = 'none';
+            }
+        });
+    }
 });
-
-function setLangFlag(lang) {
-  const langActiveFlag = document.getElementById('langActiveFlag');
-  if(!langActiveFlag) return;
-  let flag = '';
-  switch(lang) {
-    case 'fr': flag = 'https://flagcdn.com/fr.svg'; break;
-    case 'en': flag = 'https://flagcdn.com/gb.svg'; break;
-    case 'es': flag = 'https://flagcdn.com/es.svg'; break;
-    default: flag = 'https://flagcdn.com/fr.svg';
-  }
-  langActiveFlag.src = flag;
-}
-function hideCurrentFlag(lang) {
-  document.querySelectorAll('.langDropBtn').forEach(btn => {
-    btn.style.display = (btn.dataset.lang === lang) ? 'none' : 'block';
-  });
-}
 
  

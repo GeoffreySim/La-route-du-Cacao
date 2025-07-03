@@ -21,44 +21,44 @@
             </div>
             <ul class="nav-menu">
                 <li class="nav-dropdown">
-                    <a href="#" class="dropdown-toggle">
+                    <a href="#" class="dropdown-toggle" data-translate="presentation">
                         Présentation
                         <i class="fas fa-chevron-down"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="qui-sommes-nous.html">Qui Sommes Nous</a></li>
-                        <li><a href="notre-equipe.html">Notre Équipe</a></li>
+                        <li><a href="qui-sommes-nous.html" data-translate="qui-sommes-nous">Qui Sommes Nous</a></li>
+                        <li><a href="notre-equipe.html" data-translate="notre-equipe">Notre Équipe</a></li>
                     </ul>
                 </li>
                 <li class="nav-dropdown">
-                    <a href="#" class="dropdown-toggle">
+                    <a href="#" class="dropdown-toggle" data-translate="projet">
                         Projet
                         <i class="fas fa-chevron-down"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#mission">Notre Mission</a></li>
-                        <li><a href="#expedition">Nos Expéditions</a></li>
-                        <li><a href="#equipage">L'Équipage</a></li>
+                        <li><a href="#mission" data-translate="notre-mission">Notre Mission</a></li>
+                        <li><a href="#expedition" data-translate="nos-expeditions">Nos Expéditions</a></li>
+                        <li><a href="#equipage" data-translate="lequipage">L'Équipage</a></li>
                         <li><a href="rse.html">RSE</a></li>
                         <li><a href="odd.html">ODD</a></li>
                     </ul>
                 </li>
                 <li class="nav-dropdown">
-                    <a href="#" class="dropdown-toggle">
+                    <a href="#" class="dropdown-toggle" data-translate="reseau">
                         Réseau
                         <i class="fas fa-chevron-down"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#partenaires">Partenaires</a></li>
-                        <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
-                        <li><a href="presse.html">Presse</a></li>
+                        <li><a href="#partenaires" data-translate="partenaires">Partenaires</a></li>
+                        <li><a href="devenir-partenaire.html" data-translate="devenir-partenaire">Devenir Partenaire</a></li>
+                        <li><a href="presse.html" data-translate="presse">Presse</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="jeux-concours.html">Jeux & Concours</a>
+                    <a href="jeux-concours.html" data-translate="jeux-concours">Jeux & Concours</a>
                 </li>
                 <li class="nav-dropdown">
-                    <a href="#contact" class="dropdown-toggle">
+                    <a href="#contact" class="dropdown-toggle" data-translate="contact">
                         Contact
                     </a>
                 </li>
@@ -74,9 +74,9 @@
             <div class="header-right" style="display:flex;align-items:center;gap:1.2rem;margin-left:auto;">
                 <a href="videos.html" class="btn btn-primary nav-video-btn">
                     <i class="fas fa-play"></i>
-                    Vidéo
+                    <span data-translate="video">Vidéo</span>
                 </a>
-                <button id="helpBtn" class="btn btn-help">HELP</button>
+                <button id="helpBtn" class="btn btn-help" data-translate="help">HELP</button>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -90,9 +90,9 @@
     <div id="helpPopup" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.45);align-items:center;justify-content:center;">
         <div style="background:#fff;padding:2.5rem 2rem;border-radius:18px;max-width:95vw;width:400px;box-shadow:0 8px 40px rgba(0,0,0,0.18);text-align:center;position:relative;">
             <button id="closeHelpPopup" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;">&times;</button>
-            <h2 style="margin-bottom:1.2rem;">Aidez-nous&nbsp;!</h2>
+            <h2 style="margin-bottom:1.2rem;" data-translate="help-title">Aidez-nous&nbsp;!</h2>
             <div id="helpPopupContent" style="margin-bottom:1.5rem;color:#333;"></div>
-            <button id="helpActionBtn" class="btn btn-primary" style="width:100%;">Donner un coup de main</button>
+            <button id="helpActionBtn" class="btn btn-primary" style="width:100%;" data-translate="help-btn">Donner un coup de main</button>
         </div>
     </div>
 
@@ -101,11 +101,11 @@
         <div style="background:#fff;padding:3rem 2.5rem;border-radius:20px;max-width:95vw;width:450px;box-shadow:0 12px 50px rgba(0,0,0,0.25);text-align:center;position:relative;">
             <div style="margin-bottom:2rem;">
                 <i class="fas fa-tools" style="font-size:3rem;color:#8B4513;margin-bottom:1rem;"></i>
-                <h2 style="margin-bottom:1rem;color:#8B4513;">🚧 Site en cours de finalisation 🚧</h2>
-                <p style="color:#666;line-height:1.6;margin-bottom:1.5rem;">Nous travaillons actuellement sur la finalisation de notre site web. Certaines fonctionnalités peuvent encore être en cours de développement.</p>
-                <p style="color:#8B4513;font-weight:600;font-size:1.1rem;">Merci de votre patience !</p>
+                <h2 style="margin-bottom:1rem;color:#8B4513;" data-translate="construction-title">🚧 Site en cours de finalisation 🚧</h2>
+                <p style="color:#666;line-height:1.6;margin-bottom:1.5rem;" data-translate="construction-text">Nous travaillons actuellement sur la finalisation de notre site web. Certaines fonctionnalités peuvent encore être en cours de développement.</p>
+                <p style="color:#8B4513;font-weight:600;font-size:1.1rem;" data-translate="construction-thanks">Merci de votre patience !</p>
             </div>
-            <button id="closeConstructionPopup" class="btn btn-primary" style="width:100%;padding:1rem;font-size:1.1rem;">Compris, continuer</button>
+            <button id="closeConstructionPopup" class="btn btn-primary" style="width:100%;padding:1rem;font-size:1.1rem;" data-translate="construction-btn">Compris, continuer</button>
         </div>
     </div>
 
@@ -120,26 +120,26 @@
     <section id="mission" class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Notre Mission</h2>
-                <p>Mettre la lumière sur l'écologie positive et active</p>
+                <h2 data-translate="mission-title">Notre Mission</h2>
+                <p data-translate="mission-subtitle">Mettre la lumière sur l'écologie positive et active</p>
             </div>
             <div class="mission-content">
                 <div class="mission-text">
-                    <h3>Une Renaissance Bleue pour une Cause Verte</h3>
-                    <p>À Brest, deux IMOCA mythiques reprennent la mer, restaurés, transformés, ils voguent vers un nouveau récit : celui d'un monde en transition.</p>
-                    <p>À leur bord, une équipe d'étudiants engagés en énergie, écologie, architecture et audiovisuel, sélectionnés pour la pertinence de leur projet et passionnés par la rencontre et la transmission.</p>
+                    <h3 data-translate="mission-heading">Une Renaissance Bleue pour une Cause Verte</h3>
+                    <p data-translate="mission-text-1">À Brest, deux IMOCA mythiques reprennent la mer, restaurés, transformés, ils voguent vers un nouveau récit : celui d'un monde en transition.</p>
+                    <p data-translate="mission-text-2">À leur bord, une équipe d'étudiants engagés en énergie, écologie, architecture et audiovisuel, sélectionnés pour la pertinence de leur projet et passionnés par la rencontre et la transmission.</p>
                     <div class="stats">
                         <div class="stat">
                             <span class="stat-number">2</span>
-                            <span class="stat-label">Bateaux IMOCA</span>
+                            <span class="stat-label" data-translate="bateaux-imoca">Bateaux IMOCA</span>
                         </div>
                         <div class="stat">
                             <span class="stat-number">12</span>
-                            <span class="stat-label">Pays traversés</span>
+                            <span class="stat-label" data-translate="pays-traverses">Pays traversés</span>
                         </div>
                         <div class="stat">
                             <span class="stat-number">8</span>
-                            <span class="stat-label">Mois d'expédition</span>
+                            <span class="stat-label" data-translate="mois-expedition">Mois d'expédition</span>
                         </div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
     <section id="expedition" class="section bg-light">
         <div class="container">
             <div class="section-header">
-                <h2>Nos Expéditions</h2>
+                <h2 data-translate="expeditions-title">Nos Expéditions</h2>
             </div>
             <div class="timeline-birds">
                 <svg width="100%" height="60" viewBox="0 0 400 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
@@ -176,33 +176,33 @@
                 <div class="timeline-event">
                     <div class="timeline-icon"><i class="fas fa-compass"></i></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">Juil. 2025 - Mars 2026</span>
-                        <h3>Chantier Naval</h3>
-                        <p>Restauration de nos 2 IMOCA mythiques transformés en laboratoires flottants pour l'économie bleue.</p>
+                        <span class="timeline-date" data-translate="chantier-date">Juil. 2025 - Mars 2026</span>
+                        <h3 data-translate="chantier-naval">Chantier Naval</h3>
+                        <p data-translate="chantier-desc">Restauration de nos 2 IMOCA mythiques transformés en laboratoires flottants pour l'économie bleue.</p>
                     </div>
                 </div>
                 <div class="timeline-event">
                     <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">Sept. 2025 - Mai 2026</span>
-                        <h3>Appel à Projets</h3>
-                        <p>Sélection de 12 étudiants ambassadeurs pour documenter les solutions durables locales.</p>
+                        <span class="timeline-date" data-translate="appel-date">Sept. 2025 - Mai 2026</span>
+                        <h3 data-translate="appel-projets">Appel à Projets</h3>
+                        <p data-translate="appel-desc">Sélection de 12 étudiants ambassadeurs pour documenter les solutions durables locales.</p>
                     </div>
                 </div>
                 <div class="timeline-event">
                     <div class="timeline-icon"><i class="fas fa-water"></i></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">Mars 2026 - Août 2026</span>
-                        <h3>Tours d'Europe</h3>
-                        <p>33 escales en Europe pour partager le rêve, rencontrer, inspirer et rassembler.</p>
+                        <span class="timeline-date" data-translate="tours-date">Mars 2026 - Août 2026</span>
+                        <h3 data-translate="tours-europe">Tours d'Europe</h3>
+                        <p data-translate="tours-desc">33 escales en Europe pour partager le rêve, rencontrer, inspirer et rassembler.</p>
                     </div>
                 </div>
                 <div class="timeline-event">
                     <div class="timeline-icon"><i class="fas fa-dove"></i></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">Oct. 2026 - Avril 2027</span>
-                        <h3>Expédition Transatlantique</h3>
-                        <p>Odyssée humaine et écologique à travers 12 pays d'Amérique latine.</p>
+                        <span class="timeline-date" data-translate="expedition-date">Oct. 2026 - Avril 2027</span>
+                        <h3 data-translate="expedition-transatlantique">Expédition Transatlantique</h3>
+                        <p data-translate="expedition-desc">Odyssée humaine et écologique à travers 12 pays d'Amérique latine.</p>
                     </div>
                 </div>
             </div>
@@ -213,30 +213,30 @@
     <section id="equipage" class="section">
         <div class="container">
             <div class="section-header">
-                <h2>L'Équipage</h2>
-                <p>Une équipe d'étudiants engagés pour la transition écologique</p>
+                <h2 data-translate="equipage-title">L'Équipage</h2>
+                <p data-translate="equipage-subtitle">Une équipe d'étudiants engagés pour la transition écologique</p>
             </div>
             <div class="equipage-content">
                 <div class="equipage-item">
                     <div class="equipage-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3>8 Lauréats par Bateau</h3>
-                    <p>Étudiants sélectionnés en énergie, écologie, architecture et audiovisuel pour documenter les solutions durables.</p>
+                    <h3 data-translate="laureats-bateau">8 Lauréats par Bateau</h3>
+                    <p data-translate="laureats-desc">Étudiants sélectionnés en énergie, écologie, architecture et audiovisuel pour documenter les solutions durables.</p>
                 </div>
                 <div class="equipage-item">
                     <div class="equipage-icon">
                         <i class="fas fa-microscope"></i>
                     </div>
-                    <h3>Recherche Scientifique</h3>
-                    <p>Partenariat avec l'IFREMER pour des relevés environnementaux : température, biodiversité marine, pollution plastique.</p>
+                    <h3 data-translate="recherche-scientifique">Recherche Scientifique</h3>
+                    <p data-translate="recherche-desc">Partenariat avec l'IFREMER pour des relevés environnementaux : température, biodiversité marine, pollution plastique.</p>
                 </div>
                 <div class="equipage-item">
                     <div class="equipage-icon">
                         <i class="fas fa-video"></i>
                     </div>
-                    <h3>Documentaire Immersif</h3>
-                    <p>Mini-séries, carnets de bord, capsules vidéo pour partager l'aventure et inspirer l'action.</p>
+                    <h3 data-translate="documentaire-immersif">Documentaire Immersif</h3>
+                    <p data-translate="documentaire-desc">Mini-séries, carnets de bord, capsules vidéo pour partager l'aventure et inspirer l'action.</p>
                 </div>
             </div>
         </div>
@@ -246,8 +246,8 @@
     <section id="partenaires" class="section bg-light">
         <div class="container">
             <div class="section-header">
-                <h2>Partenaires RSE & Collaborations</h2>
-                <p>Un écosystème d'acteurs engagés pour la transition écologique</p>
+                <h2 data-translate="partenaires-title">Partenaires RSE & Collaborations</h2>
+                <p data-translate="partenaires-subtitle">Un écosystème d'acteurs engagés pour la transition écologique</p>
             </div>
             <div class="partenaires-banner">
                 <div class="partenaires-scroll">
@@ -330,9 +330,9 @@
             <div class="partenaires-cta">
                 <a href="devenir-partenaire.html" class="btn btn-primary btn-partner">
                     <i class="fas fa-handshake"></i>
-                    Devenir Partenaire
+                    <span data-translate="devenir-partenaire-btn">Devenir Partenaire</span>
                 </a>
-                <p>Rejoignez notre écosystème d'acteurs engagés pour la transition écologique</p>
+                <p data-translate="partenaires-cta">Rejoignez notre écosystème d'acteurs engagés pour la transition écologique</p>
             </div>
         </div>
     </section>
@@ -343,7 +343,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>La Route du Cacao</h3>
-                    <p>Une expédition pour rêver, apprendre et agir</p>
+                    <p data-translate="footer-tagline">Une expédition pour rêver, apprendre et agir</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/imoca_la_route_du_cacao/" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -351,46 +351,53 @@
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h4>Liens Rapides</h4>
+                    <h4 data-translate="liens-rapides">Liens Rapides</h4>
                     <ul>
-                        <li><a href="#accueil">Accueil</a></li>
-                        <li><a href="#mission">Notre Mission</a></li>
-                        <li><a href="#expedition">Nos Expéditions</a></li>
-                        <li><a href="#equipage">L'Équipage</a></li>
+                        <li><a href="#accueil" data-translate="accueil">Accueil</a></li>
+                        <li><a href="#mission" data-translate="notre-mission">Notre Mission</a></li>
+                        <li><a href="#expedition" data-translate="nos-expeditions">Nos Expéditions</a></li>
+                        <li><a href="#equipage" data-translate="lequipage">L'Équipage</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Informations</h4>
+                    <h4 data-translate="informations">Informations</h4>
                     <ul>
                         <li><a href="mailto:contact@larouteducacao.org">contact@larouteducacao.org</a></li>
-                        <li><a href="#">Mentions légales</a></li>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">CGV</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#" data-translate="mentions-legales">Mentions légales</a></li>
+                        <li><a href="#" data-translate="politique-confidentialite">Politique de confidentialité</a></li>
+                        <li><a href="#" data-translate="cgv">CGV</a></li>
+                        <li><a href="#" data-translate="faq">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact</h4>
+                    <h4 data-translate="contact">Contact</h4>
                     <form class="contact-form">
                         <div class="form-group">
-                            <input type="text" placeholder="Votre nom" required>
+                            <input type="text" data-translate-placeholder="votre-nom" placeholder="Votre nom" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Votre email" required>
+                            <input type="email" data-translate-placeholder="votre-email" placeholder="Votre email" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Votre message" rows="3" required></textarea>
+                            <textarea data-translate-placeholder="votre-message" placeholder="Votre message" rows="3" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                        <button type="submit" class="btn btn-primary" data-translate="envoyer">Envoyer</button>
                     </form>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 La Route du Cacao. Tous droits réservés.</p>
+                <p data-translate="copyright">&copy; 2024 La Route du Cacao. Tous droits réservés.</p>
+                <div style="margin-top:1rem;text-align:center;opacity:0.7;">
+                    <p style="font-size:0.9rem;margin-bottom:0.5rem;" data-translate="site-realise-par">Site réalisé par</p>
+                    <a href="https://neuroweb.fr/" target="_blank" style="display:inline-block;text-decoration:none;">
+                        <img src="images/partenaire10.png" alt="NeuroWeb" style="height:30px;width:auto;vertical-align:middle;">
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
