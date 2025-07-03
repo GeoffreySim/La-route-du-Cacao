@@ -147,10 +147,12 @@ if (contactForm) {
         e.preventDefault();
         
         // Récupération des données du formulaire
-        const name = this.querySelector('input[type="text"]').value;
-        const email = this.querySelector('input[type="email"]').value;
-        const phone = this.querySelector('input[type="tel"]').value;
-        const message = this.querySelector('textarea').value;
+        const nameInput = this.querySelector('input[type="text"]');
+        const emailInput = this.querySelector('input[type="email"]');
+        const messageInput = this.querySelector('textarea');
+        const name = nameInput ? nameInput.value : '';
+        const email = emailInput ? emailInput.value : '';
+        const message = messageInput ? messageInput.value : '';
         
         // Validation basique
         if (!name || !email || !message) {
@@ -166,7 +168,7 @@ if (contactForm) {
         // Envoi par EmailJS
         showNotification('Envoi en cours...', 'info');
         
-        const formData = { name, email, phone, message };
+        const formData = { name, email, message };
         sendFormEmail(formData, 'contact')
             .then(result => {
                 if (result.success) {
@@ -220,7 +222,6 @@ function formatFormMessage(formData, formType) {
         case 'contact':
             message += `Nom: ${formData.name || 'Non renseigné'}\n`;
             message += `Email: ${formData.email || 'Non renseigné'}\n`;
-            message += `Téléphone: ${formData.phone || 'Non renseigné'}\n`;
             message += `Message: ${formData.message || 'Non renseigné'}\n`;
             break;
         case 'partenaire':
