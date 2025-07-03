@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: la-route-du-cacao
+    env: static
+    buildCommand: null
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html 
