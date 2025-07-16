@@ -197,6 +197,42 @@
         </div>
     </section>
 
+    <!-- Section Documents à télécharger -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Documents à télécharger</h2>
+                <p>Retrouvez ici les documents utiles pour devenir partenaire</p>
+            </div>
+            <div class="pdf-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-top:2rem;">
+                <div class="pdf-card" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(139,69,19,0.08);padding:1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;">
+                    <i class="fas fa-file-pdf" style="font-size:2.5rem;color:#8B4513;margin-bottom:0.7em;"></i>
+                    <h3 style="margin-bottom:0.4em;">Frise</h3>
+                    <p style="font-size:0.98em;color:#555;margin-bottom:1em;">La frise chronologique du projet.</p>
+                    <a href="docs/frise.pdf" download class="btn btn-primary" style="margin-top:auto;">Télécharger</a>
+                </div>
+                <div class="pdf-card" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(139,69,19,0.08);padding:1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;">
+                    <i class="fas fa-file-pdf" style="font-size:2.5rem;color:#8B4513;margin-bottom:0.7em;"></i>
+                    <h3 style="margin-bottom:0.4em;">Présentation du projet</h3>
+                    <p style="font-size:0.98em;color:#555;margin-bottom:1em;">Découvrez les objectifs et l’esprit de La Route du Cacao.</p>
+                    <a href="docs/document2.pdf" download class="btn btn-primary" style="margin-top:auto;">Télécharger</a>
+                </div>
+                <div class="pdf-card" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(139,69,19,0.08);padding:1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;">
+                    <i class="fas fa-file-pdf" style="font-size:2.5rem;color:#8B4513;margin-bottom:0.7em;"></i>
+                    <h3 style="margin-bottom:0.4em;">BD</h3>
+                    <p style="font-size:0.98em;color:#555;margin-bottom:1em;">La bande dessinée de l’expédition.</p>
+                    <a href="docs/bd.pdf" download class="btn btn-primary" style="margin-top:auto;">Télécharger</a>
+                </div>
+                <div class="pdf-card" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(139,69,19,0.08);padding:1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;">
+                    <i class="fas fa-file-pdf" style="font-size:2.5rem;color:#8B4513;margin-bottom:0.7em;"></i>
+                    <h3 style="margin-bottom:0.4em;">RSE</h3>
+                    <p style="font-size:0.98em;color:#555;margin-bottom:1em;">Le dossier RSE du projet.</p>
+                    <a href="docs/rse.pdf" download class="btn btn-primary" style="margin-top:auto;">Télécharger</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Section Formulaire -->
     <section class="section">
         <div class="container">
@@ -349,6 +385,16 @@
         </div>
     </footer>
 
+    <!-- Popup HELP -->
+    <div id="helpPopup" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.45);align-items:center;justify-content:center;">
+        <div style="background:#fff;padding:2.5rem 2rem;border-radius:18px;max-width:95vw;width:400px;box-shadow:0 8px 40px rgba(0,0,0,0.18);text-align:center;position:relative;">
+            <button id="closeHelpPopup" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;">&times;</button>
+            <h2 style="margin-bottom:1.2rem;" data-translate="help-title">Aidez-nous&nbsp;!</h2>
+            <div id="helpPopupContent" style="margin-bottom:1.5rem;color:#333;"></div>
+            <button id="helpActionBtn" class="btn btn-primary" style="width:100%;" data-translate="help-btn">Donner un coup de main</button>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
     <script>
@@ -424,6 +470,21 @@
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'all 0.6s ease';
             observer.observe(card);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var helpBtn = document.getElementById('helpBtn');
+            var helpPopup = document.getElementById('helpPopup');
+            var closeHelpPopup = document.getElementById('closeHelpPopup');
+            if(helpBtn && helpPopup) {
+                helpBtn.onclick = function() { helpPopup.style.display = 'flex'; };
+            }
+            if(closeHelpPopup && helpPopup) {
+                closeHelpPopup.onclick = function() { helpPopup.style.display = 'none'; };
+            }
+            if(helpPopup) {
+                helpPopup.onclick = function(e) { if(e.target === helpPopup) helpPopup.style.display = 'none'; };
+            }
         });
     </script>
 </body>
