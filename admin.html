@@ -397,9 +397,11 @@
                     <input type="text" name="duration" placeholder="05:30">
                 </div>
                 <div class="form-group">
-                    <label>Playlist</label>
-                    <select name="playlist">
-                        <option value="">Aucune playlist</option>
+                    <label>Catégorie</label>
+                    <select name="category" id="videoCategory" required>
+                        <option value="">-- Choisir une catégorie --</option>
+                        <option value="video-gauche">Vidéo gauche (principale)</option>
+                        <option value="video-droite">Vidéo droite (principale)</option>
                         <option value="recherche">Recherche Scientifique</option>
                         <option value="rencontres">Rencontres Humaines</option>
                         <option value="solutions">Solutions Durables</option>

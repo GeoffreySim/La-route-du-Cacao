@@ -367,7 +367,7 @@ class AdminPanel {
                     videoId: formData.get('videoId'),
                     thumbnailUrl: formData.get('thumbnailUrl'),
                     duration: formData.get('duration'),
-                    playlist: formData.get('playlist'),
+                    category: formData.get('category'),
                     tags: formData.get('tags').split(',').map(tag => tag.trim()).filter(tag => tag),
                     lastModified: new Date().toISOString()
                 };
@@ -386,7 +386,7 @@ class AdminPanel {
                 videoId: formData.get('videoId'),
                 thumbnailUrl: formData.get('thumbnailUrl'),
                 duration: formData.get('duration'),
-                playlist: formData.get('playlist'),
+                category: formData.get('category'),
                 tags: formData.get('tags').split(',').map(tag => tag.trim()).filter(tag => tag),
                 date: new Date().toISOString(),
                 views: 0
@@ -432,7 +432,7 @@ class AdminPanel {
                         <span class="video-date">${new Date(video.date).toLocaleDateString()}</span>
                         <span class="video-views">${video.views} vues</span>
                         ${video.duration ? `<span class="video-duration">${video.duration}</span>` : ''}
-                        ${video.playlist ? `<span class="video-playlist">${this.getPlaylistName(video.playlist)}</span>` : ''}
+                        ${video.category ? `<span class="video-category">${this.getPlaylistName(video.category)}</span>` : ''}
                     </div>
                     ${video.tags && video.tags.length > 0 ? `
                         <div class="video-tags">
@@ -463,7 +463,7 @@ class AdminPanel {
     updatePlaylistCounts() {
         // Compter les vidéos par playlist
         this.playlists.forEach(playlist => {
-            playlist.videoCount = this.videos.filter(video => video.playlist === playlist.id).length;
+            playlist.videoCount = this.videos.filter(video => video.category === playlist.id).length;
         });
         
         // Sauvegarder les playlists mises à jour
@@ -645,7 +645,7 @@ class AdminPanel {
             document.querySelector('input[name="videoId"]').value = video.videoId || '';
             document.querySelector('input[name="thumbnailUrl"]').value = video.thumbnailUrl || '';
             document.querySelector('input[name="duration"]').value = video.duration || '';
-            document.querySelector('select[name="playlist"]').value = video.playlist || '';
+            document.querySelector('select[name="category"]').value = video.category || '';
             document.querySelector('input[name="tags"]').value = video.tags ? video.tags.join(', ') : '';
             
             // Change modal title and button
